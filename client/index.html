@@ -12,15 +12,17 @@
 <body>
   <main class="container">
     <h1>Karaoke Cave</h1>
-    <div class="form-group">
-      <label for="search">Search</label>
-      <input type="text" class="form-control" id="search">
+    <form onsubmit="return false;">
+      <div class="form-group">
+        <label for="search">Search</label>
+        <input type="text" class="form-control" id="search">
 
-      <button id="searchButton">Go</button>
-      <br/>
-      <label for="filter">Filter</label>
-      <input type="text" class="form-control" id="filter">
-    </div>
+        <input type="submit" id="searchButton" style="visibility:hidden"></input>
+        <br />
+        <!-- <label for="filter">Filter</label>
+      <input type="text" class="form-control" id="filter"> -->
+      </div>
+    </form>
     <section id="videos" class="row"></section>
   </main>
 
