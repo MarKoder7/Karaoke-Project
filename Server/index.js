@@ -1,3 +1,7 @@
+const path = require('path');
+
+const exphbs = require('express-handlebars');
+
 const express = require("express");
 const cors = require("cors");
 const morgan = require("morgan");
@@ -6,12 +10,29 @@ require("dotenv").config();
 
 const app = express();
 
+const router = express.Router();
+
 // Using the middleWare
 app.use(morgan("tiny"));
 
 app.use(cors());
 
+//Set handlebars middleware
+app.engine('handlebars', exphbs());
+app.set('view engine', 'handlebars');
+app.use(express.static('public'))
+
+
+app.get('/video', (req, res) => {
+  res.render("video", {
+    layout: false,
+    videoid : req.query.v
+  });
+})
+
+
 app.get("/videos", (req, res) => {
+  // res.render('index')
   let search = req.query.search;
   const url =
     "https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=100&q=karaoke%20" +

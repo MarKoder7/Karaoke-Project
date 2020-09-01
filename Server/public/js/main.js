@@ -15,15 +15,21 @@ function getVideos(search) {
   fetch(API_KEY)
     .then((videos) => videos.json())
     .then((videos) => {
+      console.log(videos);
       allVideos = videos;
-
       videos.forEach((video) => {
-        //Creating elements for bootstrap
+        //Creating HTML Elements (BootStrap)
+        // Creating ancor tag for the video link, it witll contaion the Video Element as a child 
+        const link = document.createElement('a');
+        // link.href = `https://www.youtube.com/watch?v= ${video.id.videoId}`;
+        link.href = `video?v=${video.id.videoId}`;
+        // that's an attribuite for the link to open in a new tab (<target = _blank>)
+        link.setAttribute('target', '_blank');
+
+
         const videoElement = document.createElement("div");
         videoElement.className = "media";
         videoElementsByID[video.id.videoId] = videoElement;
-        //videoElement.dataset.id = video.id.videoId;
-        // videoElement.id = video.id.videoId;
 
         const img = document.createElement("img");
         img.src = video.snippet.thumbnails.medium.url;
@@ -39,13 +45,15 @@ function getVideos(search) {
         h5.textContent = video.snippet.title;
         mediaBody.appendChild(h5);
 
-        //we need to put the video element in the VIDEOS element
-        videosElement.appendChild(videoElement);
+        //We need to put the video element in the link Ancor tag Element, then the Ancor tag inside VIDEOS Elemenmt
+        link.appendChild(videoElement)
+        videosElement.appendChild(link);
       });
     });
 }
 
 document.addEventListener("DOMContentLoaded", function () {
+  getVideos("");
   document
     .getElementById("searchButton")
     .addEventListener("click", function () {
