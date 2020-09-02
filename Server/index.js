@@ -10,7 +10,7 @@ require("dotenv").config();
 
 const app = express();
 
-const router = express.Router();
+// const router = express.Router();
 
 // Using the middleWare
 app.use(morgan("tiny"));
@@ -20,7 +20,7 @@ app.use(cors());
 //Set handlebars middleware
 app.engine('handlebars', exphbs());
 app.set('view engine', 'handlebars');
-app.use(express.static('public'))
+app.use(express.static('public'));
 
 
 app.get('/video', (req, res) => {
