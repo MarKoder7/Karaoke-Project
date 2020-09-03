@@ -1,3 +1,18 @@
 body {
-    background: url("../images/2035085.jpg") fixed no-repeat;
+    background: url("../images/Mic1.jpg") no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+.videoElement {
+    display: block;
+    margin-left:535px;
+    margin-top: 40px;
+}
+
+audio {
+    display: block;
+    margin: 5px;
 }
